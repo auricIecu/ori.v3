@@ -307,7 +307,7 @@ const App = () => {
                 <div className="flex mt-1 space-x-2">
                   <button
                     onClick={() => sendFeedback(msg, true)}
-                    className={`text-xs p-1 rounded-full ${msg.feedback === 'positive' ? 'bg-green-600' : 'bg-zinc-800'} text-white`}
+                    className={`text-lg bg-transparent border-none ${msg.feedback === 'positive' ? 'opacity-100' : 'opacity-60'}`}
                     title="Me gusta esta respuesta"
                     disabled={msg.feedback}
                   >
@@ -315,7 +315,7 @@ const App = () => {
                   </button>
                   <button
                     onClick={() => sendFeedback(msg, false)}
-                    className={`text-xs p-1 rounded-full ${msg.feedback === 'negative' ? 'bg-red-600' : 'bg-zinc-800'} text-white`}
+                    className={`text-lg bg-transparent border-none ${msg.feedback === 'negative' ? 'opacity-100' : 'opacity-60'}`}
                     title="No me gusta esta respuesta"
                     disabled={msg.feedback}
                   >
