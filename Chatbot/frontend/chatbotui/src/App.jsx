@@ -205,54 +205,67 @@ const App = () => {
   };
 
   return (
-    <div className="bg-[#00db67] fixed inset-0 flex justify-center items-center p-4">
+    <div className="bg-[#00db67] fixed inset-0 flex">
+      {/* Barra lateral izquierda */}
+      <div className="bg-[#00db67] w-20 sm:w-48 flex flex-col items-center sm:items-start p-4 border-r border-green-500">
+        {/* Logo */}
+        <div className="mb-8 flex justify-center w-full">
+          <img 
+            src={customLogo} 
+            alt="Logo" 
+            className="h-16 w-auto" 
+          />
+        </div>
 
-      <div className="w-full max-w-lg bg-[#00db67] p-4 sm:p-6">
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center gap-2">
-            <img 
-              src={customLogo} 
-              alt="Logo" 
-              className="h-16 w-auto" 
+        {/* Botones en vertical */}
+        <div className="flex flex-col space-y-4 w-full items-center sm:items-stretch">
+          {/* Nueva */}
+          <button
+            onClick={startNewConversation}
+            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center"
+          >
+            Nueva
+          </button>
+
+          {/* Personalizar AI */}
+          <button
+            onClick={() => setShowSystemMessage(!showSystemMessage)}
+            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center"
+          >
+            Personalizar AI
+          </button>
+
+          {/* Exportar */}
+          <button
+            onClick={exportConversation}
+            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center"
+          >
+            Exportar
+          </button>
+
+          {/* Borrar */}
+          <button
+            onClick={clearConversation}
+            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center"
+          >
+            Borrar
+          </button>
+          
+          {/* Historial de conversaciones */}
+          <div className="w-full mt-4">
+            <ConversationHistory 
+              onSelectConversation={loadConversation} 
+              currentConversationId={conversationId} 
             />
-            {/* Se ha eliminado el título con la palabra orito */}
-          </div>
-          <div className="flex space-x-2">
-            <button
-              onClick={() => setShowSystemMessage(!showSystemMessage)}
-              className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors"
-            >
-              Personalizar AI
-            </button>
-            <button
-              onClick={exportConversation}
-              className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors"
-            >
-              Exportar
-            </button>
-            <button
-              onClick={startNewConversation}
-              className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors"
-            >
-              Nueva
-            </button>
-            <button
-              onClick={clearConversation}
-              className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors"
-            >
-              Borrar
-            </button>
           </div>
         </div>
-        
-        {/* Componente de historial de conversaciones */}
-        <ConversationHistory 
-          onSelectConversation={loadConversation} 
-          currentConversationId={conversationId} 
-        />
+      </div>
+
+      {/* Área principal de chat */}
+      <div className="flex-1 flex flex-col p-4 overflow-hidden max-w-3xl mx-auto">
 
         {showSystemMessage && (
-          <div className="mb-4 p-3 bg-zinc-800">
+          <div className="mb-4 p-3 bg-zinc-800 rounded-lg">
             <textarea
               value={systemMessage}
               onChange={(e) => setSystemMessage(e.target.value)}
@@ -263,13 +276,13 @@ const App = () => {
             <div className="flex justify-end space-x-2">
               <button
                 onClick={() => setShowSystemMessage(false)}
-                className="bg-[#efca2d] text-black py-2 px-4 rounded-full text-sm hover:opacity-80 transition-colors"
+                className="bg-[#76dd76] text-black py-2 px-4 rounded-full text-sm hover:opacity-80 transition-colors"
               >
                 Cancelar
               </button>
               <button
                 onClick={updateSystemMessage}
-                className="bg-[#efca2d] text-black py-2 px-4 rounded-full text-sm hover:opacity-80 transition-colors"
+                className="bg-[#76dd76] text-black py-2 px-4 rounded-full text-sm hover:opacity-80 transition-colors"
               >
                 Guardar
               </button>
@@ -279,14 +292,15 @@ const App = () => {
 
         <div
           ref={chatContainerRef}
-          className="overflow-y-auto h-96 space-y-4 mb-4 p-4"
+          className="overflow-y-auto flex-grow space-y-4 mb-4 p-2 sm:p-4"
+          style={{ height: 'calc(100vh - 140px)' }}
         >
           {chatHistory.map((msg, index) => (
             <div
               key={index}
               className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
             >
-              <div className={`max-w-xs ${msg.sender === 'user' ? 'p-4 bg-[#76dd76] rounded-full' : ''} text-black`}>
+              <div className={`max-w-xs sm:max-w-sm md:max-w-md ${msg.sender === 'user' ? 'p-4 bg-[#76dd76] rounded-full' : ''} text-black`}>
                 {msg.text}
               </div>
               {msg.sender === 'ai' && (
@@ -323,7 +337,7 @@ const App = () => {
 
 
         {isChatActive && (
-          <form onSubmit={sendMessage} className="flex flex-col sm:flex-row items-center  sm:space-x-2">
+          <form onSubmit={sendMessage} className="flex flex-col sm:flex-row items-center sm:space-x-2 sticky bottom-0 bg-[#00db67] py-2 mt-auto">
             <input
               type="text"
               value={message}
@@ -333,7 +347,7 @@ const App = () => {
             />
             <button
               type="submit"
-              className="bg-[#76dd76] text-black py-3 px-5 text-sm sm:text-base disabled:opacity-50 rounded-full hover:opacity-80 transition-colors"
+              className="bg-[#76dd76] text-black py-3 px-5 mt-2 sm:mt-0 text-sm sm:text-base disabled:opacity-50 rounded-full hover:opacity-80 transition-colors"
               disabled={loading || !message.trim()}
             >
               Send
