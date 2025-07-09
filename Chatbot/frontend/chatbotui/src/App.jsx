@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
+import './fonts.css';
 import customLogo from './assets/Logo1.png';
 import iconoNueva from './assets/Signo mas.png';
 import iconoPersonalizar from './assets/Signo ajuste.png';
 import iconoExportar from './assets/Signo exportar.png';
 import iconoBorrar from './assets/Signo borrar.png';
 import iconoHistorial from './assets/Signo historial.png';
+import iconoEnviar from './assets/Signo enviar.png';
 import ConversationHistory from './ConversationHistory';
 
 const App = () => {
@@ -355,7 +357,7 @@ const App = () => {
         {isChatActive && (
           <div className={`flex flex-col items-center ${isFirstInteraction ? 'h-full' : ''}`} style={isFirstInteraction ? {justifyContent: 'center', transform: 'translateY(-20%)'} : {}}>
             {isFirstInteraction && (
-              <h1 className="text-6xl font-bold mb-2" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif', color: '#f7c61a' }}>
+              <h1 className="text-6xl font-bold mb-2 orito-title" style={{ color: '#f7c61a' }}>
                 Orito
               </h1>
             )}
@@ -378,10 +380,11 @@ const App = () => {
               />
               <button
                 type="submit"
-                className="bg-[#76dd76] text-black py-3 px-5 mt-2 sm:mt-0 text-sm sm:text-base disabled:opacity-50 rounded-full hover:opacity-80 transition-colors"
+                className="bg-transparent border-0 outline-none flex items-center justify-center p-0 mt-2 sm:mt-0 disabled:opacity-50 hover:opacity-80 transition-opacity"
                 disabled={loading || !message.trim()}
+                style={{boxShadow: 'none'}}
               >
-                Send
+                <img src={iconoEnviar} alt="Send" className="h-14 w-14" style={{filter: 'none'}} />
               </button>
             </form>
           </div>

@@ -1,0 +1,8 @@
+/* Font styling for Orito title */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.orito-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  text-transform: none;
+}
