@@ -13,6 +13,7 @@ const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [isChatActive, setIsChatActive] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [isFirstInteraction, setIsFirstInteraction] = useState(true);
   const [conversationId, setConversationId] = useState(null);
   const [systemMessage, setSystemMessage] = useState('You are a useful AI assistant.');
   const [showSystemMessage, setShowSystemMessage] = useState(false);
@@ -308,7 +309,7 @@ const App = () => {
         <div
           ref={chatContainerRef}
           className="overflow-y-auto flex-grow space-y-4 mb-4 p-2 sm:p-4"
-          style={{ height: 'calc(100vh - 140px)' }}
+          style={{ height: isFirstInteraction ? 'calc(30vh)' : 'calc(100vh - 140px)' }}
         >
           {chatHistory.map((msg, index) => (
             <div
@@ -352,22 +353,38 @@ const App = () => {
 
 
         {isChatActive && (
-          <form onSubmit={sendMessage} className="flex flex-col sm:flex-row items-center sm:space-x-2 sticky bottom-0 bg-[#00db67] py-2 mt-auto">
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-full p-3 focus:outline-none bg-[#303030] text-white text-sm sm:text-base rounded-full"
-              placeholder="Type your message..."
-            />
-            <button
-              type="submit"
-              className="bg-[#76dd76] text-black py-3 px-5 mt-2 sm:mt-0 text-sm sm:text-base disabled:opacity-50 rounded-full hover:opacity-80 transition-colors"
-              disabled={loading || !message.trim()}
+          <div className={`flex flex-col items-center ${isFirstInteraction ? 'h-full justify-center' : ''}`}>
+            {isFirstInteraction && (
+              <h1 className="text-4xl font-bold mb-8 text-black" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                Orito
+              </h1>
+            )}
+            <form 
+              onSubmit={(e) => {
+                if (isFirstInteraction) {
+                  setIsFirstInteraction(false);
+                }
+                sendMessage(e);
+              }} 
+              className={`flex flex-col sm:flex-row items-center sm:space-x-2 ${isFirstInteraction ? 'w-2/3 mx-auto' : 'sticky bottom-0 w-full'} bg-[#00db67] py-2 ${isFirstInteraction ? '' : 'mt-auto'}`}
             >
-              Send
-            </button>
-          </form>
+              <input
+                type="text"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full p-3 focus:outline-none bg-[#303030] text-white text-sm sm:text-base rounded-full"
+                placeholder="Type your message..."
+                autoFocus={isFirstInteraction}
+              />
+              <button
+                type="submit"
+                className="bg-[#76dd76] text-black py-3 px-5 mt-2 sm:mt-0 text-sm sm:text-base disabled:opacity-50 rounded-full hover:opacity-80 transition-colors"
+                disabled={loading || !message.trim()}
+              >
+                Send
+              </button>
+            </form>
+          </div>
         )}
       </div>
     </div>
