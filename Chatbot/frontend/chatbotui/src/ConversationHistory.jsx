@@ -65,10 +65,10 @@ const ConversationHistory = ({ onSelectConversation, currentConversationId }) =>
     <div className="mb-4">
       <button
         onClick={() => setShowHistory(!showHistory)}
-        className="flex items-center justify-center text-black bg-[#76dd76] hover:opacity-80 px-3 py-1 rounded-full text-sm mb-2 transition-colors w-full"
+        className="flex items-center justify-center text-black bg-transparent border-none hover:opacity-80 px-3 py-1 text-sm mb-2 transition-colors w-full"
         title="Historial de conversaciones"
       >
-        <img src={iconoHistorial} alt="Historial" className="h-6 w-auto" />
+        <img src={iconoHistorial} alt="Historial" className="h-8 w-auto" />
         <span className="ml-1 text-xs">{showHistory ? '▼' : '►'}</span>
       </button>
       
