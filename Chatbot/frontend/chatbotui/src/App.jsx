@@ -213,9 +213,9 @@ const App = () => {
   };
 
   return (
-    <div className="bg-[#00db67] fixed inset-0 flex">
+    <div className="bg-[#262624] fixed inset-0 flex">
       {/* Barra lateral izquierda */}
-      <div className="bg-[#00db67] w-10 sm:w-20 flex flex-col items-center sm:items-start p-2 border-r border-green-500 h-full">
+      <div className="bg-[#262624] w-10 sm:w-20 flex flex-col items-center sm:items-start p-2 border-r border-gray-600 h-full">
         {/* Logo */}
         <div className="mb-8 flex justify-center w-full">
           <img 
@@ -318,7 +318,7 @@ const App = () => {
               key={index}
               className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
             >
-              <div className={`max-w-xs sm:max-w-sm md:max-w-md ${msg.sender === 'user' ? 'p-4 bg-[#76dd76] rounded-full' : ''} text-black`}>
+              <div className={`max-w-xs sm:max-w-sm md:max-w-md ${msg.sender === 'user' ? 'p-4 bg-[#3a3a3a] rounded-full' : ''} text-white`}>
                 {msg.text}
               </div>
               {msg.sender === 'ai' && (
@@ -368,7 +368,7 @@ const App = () => {
                 }
                 sendMessage(e);
               }} 
-              className={`flex flex-col sm:flex-row items-center sm:space-x-4 ${isFirstInteraction ? 'w-2/3 mx-auto' : 'sticky bottom-0 w-full'} bg-[#00db67] py-3 ${isFirstInteraction ? '' : 'mt-auto'}`}
+              className={`flex flex-col sm:flex-row items-center sm:space-x-4 ${isFirstInteraction ? 'w-2/3 mx-auto' : 'sticky bottom-0 w-full'} bg-[#262624] py-3 ${isFirstInteraction ? '' : 'mt-auto'}`}
             >
               <input
                 type="text"
@@ -384,7 +384,7 @@ const App = () => {
                 disabled={loading || !message.trim()}
                 style={{boxShadow: 'none'}}
               >
-                <img src={iconoEnviar} alt="Send" className="h-12 w-12" style={{filter: 'none', marginBottom: isFirstInteraction ? '0' : '2px'}} />
+                <img src={iconoEnviar} alt="Send" style={{width: '48px', height: '48px', aspectRatio: '1/1', objectFit: 'contain', filter: 'none', marginBottom: isFirstInteraction ? '0' : '2px'}} />
               </button>
             </form>
           </div>
