@@ -368,7 +368,7 @@ const App = () => {
                 }
                 sendMessage(e);
               }} 
-              className={`flex flex-col sm:flex-row items-center sm:space-x-2 ${isFirstInteraction ? 'w-2/3 mx-auto' : 'sticky bottom-0 w-full'} bg-[#00db67] py-2 ${isFirstInteraction ? '' : 'mt-auto'}`}
+              className={`flex flex-col sm:flex-row items-center sm:space-x-4 ${isFirstInteraction ? 'w-2/3 mx-auto' : 'sticky bottom-0 w-full'} bg-[#00db67] py-3 ${isFirstInteraction ? '' : 'mt-auto'}`}
             >
               <input
                 type="text"
@@ -380,11 +380,11 @@ const App = () => {
               />
               <button
                 type="submit"
-                className="bg-transparent border-0 outline-none flex items-center justify-center p-0 mt-2 sm:mt-0 disabled:opacity-50 hover:opacity-80 transition-opacity"
+                className="bg-transparent border-0 outline-none flex items-center justify-center p-0 mt-2 sm:mt-0 disabled:opacity-50 hover:opacity-80 transition-opacity sm:ml-2"
                 disabled={loading || !message.trim()}
                 style={{boxShadow: 'none'}}
               >
-                <img src={iconoEnviar} alt="Send" className="h-14 w-14" style={{filter: 'none'}} />
+                <img src={iconoEnviar} alt="Send" className="h-12 w-12" style={{filter: 'none', marginBottom: isFirstInteraction ? '0' : '2px'}} />
               </button>
             </form>
           </div>
