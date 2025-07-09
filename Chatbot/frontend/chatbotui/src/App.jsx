@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import customLogo from './assets/Logo1.png';
+import iconoNueva from './assets/Signo mas.png';
+import iconoPersonalizar from './assets/Signo ajuste.png';
+import iconoExportar from './assets/Signo exportar.png';
+import iconoBorrar from './assets/Signo borrar.png';
+import iconoHistorial from './assets/Signo historial.png';
 import ConversationHistory from './ConversationHistory';
 
 const App = () => {
@@ -222,33 +227,37 @@ const App = () => {
           {/* Nueva */}
           <button
             onClick={startNewConversation}
-            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center"
+            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center items-center"
+            title="Nueva conversación"
           >
-            Nueva
+            <img src={iconoNueva} alt="Nueva" className="h-6 w-auto" />
           </button>
 
           {/* Personalizar AI */}
           <button
             onClick={() => setShowSystemMessage(!showSystemMessage)}
-            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center"
+            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center items-center"
+            title="Personalizar AI"
           >
-            Personalizar AI
+            <img src={iconoPersonalizar} alt="Personalizar AI" className="h-6 w-auto" />
           </button>
 
           {/* Exportar */}
           <button
             onClick={exportConversation}
-            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center"
+            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center items-center"
+            title="Exportar"
           >
-            Exportar
+            <img src={iconoExportar} alt="Exportar" className="h-6 w-auto" />
           </button>
 
           {/* Borrar */}
           <button
             onClick={clearConversation}
-            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center"
+            className="bg-[#76dd76] text-black py-2 px-4 text-sm rounded-full hover:opacity-80 transition-colors w-full flex justify-center items-center"
+            title="Borrar"
           >
-            Borrar
+            <img src={iconoBorrar} alt="Borrar" className="h-6 w-auto" />
           </button>
           
           {/* Historial de conversaciones */}

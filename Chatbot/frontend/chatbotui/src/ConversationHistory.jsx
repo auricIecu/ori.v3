@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import iconoHistorial from './assets/Signo historial.png';
 
 const ConversationHistory = ({ onSelectConversation, currentConversationId }) => {
   const [conversations, setConversations] = useState([]);
@@ -64,9 +65,11 @@ const ConversationHistory = ({ onSelectConversation, currentConversationId }) =>
     <div className="mb-4">
       <button
         onClick={() => setShowHistory(!showHistory)}
-        className="flex items-center text-black bg-[#76dd76] hover:opacity-80 px-3 py-1 rounded-lg text-sm mb-2 transition-colors"
+        className="flex items-center justify-center text-black bg-[#76dd76] hover:opacity-80 px-3 py-1 rounded-full text-sm mb-2 transition-colors w-full"
+        title="Historial de conversaciones"
       >
-        <span>{showHistory ? '▼' : '►'} Historial de conversaciones</span>
+        <img src={iconoHistorial} alt="Historial" className="h-6 w-auto" />
+        <span className="ml-1 text-xs">{showHistory ? '▼' : '►'}</span>
       </button>
       
       {showHistory && (
