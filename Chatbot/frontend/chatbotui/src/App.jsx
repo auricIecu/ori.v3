@@ -212,7 +212,7 @@ const App = () => {
   return (
     <div className="bg-[#00db67] fixed inset-0 flex">
       {/* Barra lateral izquierda */}
-      <div className="bg-[#00db67] w-20 sm:w-48 flex flex-col items-center sm:items-start p-4 border-r border-green-500 h-full">
+      <div className="bg-[#00db67] w-10 sm:w-20 flex flex-col items-center sm:items-start p-2 border-r border-green-500 h-full">
         {/* Logo */}
         <div className="mb-8 flex justify-center w-full">
           <img 
@@ -232,7 +232,7 @@ const App = () => {
               className="bg-transparent border-none text-black py-2 px-2 text-sm hover:opacity-80 transition-colors w-full flex justify-center items-center"
               title="Nueva conversación"
             >
-              <img src={iconoNueva} alt="Nueva" className="h-8 w-auto" />
+              <img src={iconoNueva} alt="Nueva" className="h-11 w-auto" />
             </button>
 
             {/* Personalizar AI */}
@@ -241,7 +241,7 @@ const App = () => {
               className="bg-transparent border-none text-black py-2 px-2 text-sm hover:opacity-80 transition-colors w-full flex justify-center items-center"
               title="Personalizar AI"
             >
-              <img src={iconoPersonalizar} alt="Personalizar AI" className="h-8 w-auto" />
+              <img src={iconoPersonalizar} alt="Personalizar AI" className="h-11 w-auto" />
             </button>
 
             {/* Exportar */}
@@ -250,7 +250,7 @@ const App = () => {
               className="bg-transparent border-none text-black py-2 px-2 text-sm hover:opacity-80 transition-colors w-full flex justify-center items-center"
               title="Exportar"
             >
-              <img src={iconoExportar} alt="Exportar" className="h-8 w-auto" />
+              <img src={iconoExportar} alt="Exportar" className="h-11 w-auto" />
             </button>
 
             {/* Borrar */}
@@ -259,7 +259,7 @@ const App = () => {
               className="bg-transparent border-none text-black py-2 px-2 text-sm hover:opacity-80 transition-colors w-full flex justify-center items-center"
               title="Borrar"
             >
-              <img src={iconoBorrar} alt="Borrar" className="h-8 w-auto" />
+              <img src={iconoBorrar} alt="Borrar" className="h-11 w-auto" />
             </button>
           </div>
           
