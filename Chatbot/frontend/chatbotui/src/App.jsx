@@ -353,9 +353,9 @@ const App = () => {
 
 
         {isChatActive && (
-          <div className={`flex flex-col items-center ${isFirstInteraction ? 'h-full justify-center' : ''}`}>
+          <div className={`flex flex-col items-center ${isFirstInteraction ? 'h-full' : ''}`} style={isFirstInteraction ? {justifyContent: 'center', transform: 'translateY(-20%)'} : {}}>
             {isFirstInteraction && (
-              <h1 className="text-4xl font-bold mb-8 text-black" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+              <h1 className="text-6xl font-bold mb-2" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif', color: '#f7c61a' }}>
                 Orito
               </h1>
             )}
