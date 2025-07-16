@@ -58,12 +58,22 @@ Orito no es solo un chatbot, es un aliado estratégico que potencia la comunicac
    cd orito_chatbot/Chatbot
    ```
 
-2. Inicia los contenedores con Docker Compose:
+2. Configura las variables de entorno:
+   ```bash
+   cp backend/.env.example backend/.env
+   ```
+   Edita el archivo `backend/.env` y agrega tu API Key de Groq:
+   ```
+   GROQ_API_KEY = tu_clave_api_de_groq
+   ```
+   Puedes obtener una API Key de Groq registrándote en [https://console.groq.com/](https://console.groq.com/)
+
+3. Inicia los contenedores con Docker Compose:
    ```bash
    docker-compose up --build
    ```
 
-3. La aplicación estará disponible en:
+4. La aplicación estará disponible en:
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8000
    - Documentación de la API: http://localhost:8000/docs
